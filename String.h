@@ -3,29 +3,29 @@
 class String
 {
   public:
-    /// Both constructors should construct
-    /// this String from the parameter s
-    String( const char * s = "");
-    String( const String & s );
-    String operator = ( const String & s );
-    char & operator [] ( int index );
-    int size();
-    String reverse(); // does not modify this String
-    int indexOf( const char c );
-    int indexOf( const String pattern );
-    bool operator == ( const String s );
-    bool operator != ( const String s );
-    bool operator > ( const String s );
-    bool operator < ( const String s )
-    bool operator <= ( const String s );
-    bool operator >= ( const String s );
-    /// concatenates this and s to return result
-    String operator + ( const String s );
-    /// concatenates s onto end of this string
-    String operator += ( const String s );
-    void print( ostream & out );
-    void read( istream & in );
-    ~String();
+    // /// Both constructors should construct
+    // /// this String from the parameter s
+    // String( const char * s = "");
+    // String( const String & s );
+    // String operator = ( const String & s );
+    // char & operator [] ( int index );
+    // int size();
+    // String reverse(); // does not modify this String
+    // int indexOf( const char c );
+    // int indexOf( const String pattern );
+    // bool operator == ( const String s );
+    // bool operator != ( const String s );
+    // bool operator > ( const String s );
+    // bool operator < ( const String s )
+    // bool operator <= ( const String s );
+    // bool operator >= ( const String s );
+    // /// concatenates this and s to return result
+    // String operator + ( const String s );
+    // /// concatenates s onto end of this string
+    // String operator += ( const String s );
+    // void print( ostream & out );
+    // void read( istream & in );
+    // ~String();
   private:
     bool inBounds( int i ) {
       return i >= 0 && i < strlen(buf);

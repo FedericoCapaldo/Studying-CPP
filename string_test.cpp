@@ -2,21 +2,26 @@
 #include <iostream>
 using namespace std;
 
-char * myStrcpy( char *dest, const char *src ) {
-  char *destinationString = dest;
-  while((*dest++ = *src++));
-  return destinationString;
+
+char * myStrcat(char *dest, const char *src) {
+  int i, j;
+  for (i = 0; dest[i] != '\0'; i++) {
+    for (j = 0; src[j] != '\0'; j++) {
+      dest[i+j] = src[j];
+    }
+  }
+  dest[i+j] = '\0';
+  return dest;
 }
 
 
 int main() {
-
-  char str1[]="Sample string";
-  char str2[40];
-  char str3[40];
-  myStrcpy (str2,str1);
-  myStrcpy (str3,"copy successful");
-  printf ("str1: %s\nstr2: %s\nstr3: %s\n",str1,str2,str3);
+  char str[80];
+  strcpy (str,"these ");
+  strcat (str,"strings ");
+  strcat (str,"are ");
+  strcat (str,"concatenated.");
+  puts (str);
+  cout << String::strlen(str) << endl;
   return 0;
-
 }

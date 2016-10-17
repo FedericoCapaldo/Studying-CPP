@@ -26,7 +26,7 @@ class String
     // void print( ostream & out );
     // void read( istream & in );
     // ~String();
-  private:
+
     bool inBounds( int i ) {
       return i >= 0 && i < strlen(buf);
     }

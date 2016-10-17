@@ -45,5 +45,5 @@ class String
     // use the null ‘\0’ terminator to mark the end
 };
 
-ostream & operator << ( ostream & out, String str );
-istream & operator >> ( istream & in, String & str );
+// ostream & operator << ( ostream & out, String str );
+// istream & operator >> ( istream & in, String & str );

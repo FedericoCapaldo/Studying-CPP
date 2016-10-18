@@ -28,6 +28,12 @@ char * String::strcat(char *dest, const char *src) {
   return dest;
 }
 
+// compare two strings, returns 0 if they are the same
 int String::strcmp( const char *left, const char *right ) {
-
+  for (int i = 0; left[i] != '\0'; i++) {
+    if(left[i] != right[i]) {
+      return 1;
+    }
+  }
+  return 0;
 }

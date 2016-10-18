@@ -3,25 +3,23 @@
 using namespace std;
 
 
-char * myStrcat(char *dest, const char *src) {
-  int i, j;
-  for (i = 0; dest[i] != '\0'; i++) ;
-  for (j = 0; src[j] != '\0'; j++) {
-    dest[i+j] = src[j];
+int myStrcmp( const char *left, const char *right ) {
+  for (int i = 0; left[i] != '\0'; i++) {
+    if(left[i] != right[i]) {
+      return 1;
+    }
   }
-  dest[i+j] = '\0';
-  return dest;
+  return 0;
 }
 
-
 int main() {
-  char str[80];
-  strcpy (str,"these ");
-  myStrcat (str,"strings ");
-  myStrcat (str,"are ");
-  myStrcat (str,"concatenated.");
-  cout << String::strlen(str) << endl;
-  puts (str);
-
+  char key[] = "apple";
+  char buffer[80];
+  do {
+     printf ("Guess my favorite fruit? ");
+     fflush (stdout);
+     scanf ("%79s",buffer);
+  } while (myStrcmp (key,buffer) != 0);
+  puts ("Correct answer!");
   return 0;
 }

@@ -2,26 +2,36 @@
 #include <iostream>
 using namespace std;
 
-char * myStrchr( char *str, int c ) {
-  while(*str != '\0'){
-    if(*str == c) {
-      return str;
+char * myStrstr(char *haystack, const char *needle ) {
+  char *myPointer = NULL;
+
+  int i =0;
+  while(haystack[i] != '\0') {
+    if(haystack[i] == needle[0]) {
+      myPointer = haystack + i; //memory address incremented by i, to point at that memory location
+        int j=1;
+        while(needle[j] != '\0') {
+          if(haystack[i+j] != needle[j]) {
+            myPointer = NULL;
+            j = 1;
+            break;
+          }
+          j++;
+        }
+        if(j != 1) {
+          return myPointer;
+        }
     }
-    str++;
+    i++;
   }
-  return 0;
+  return myPointer;
 }
 
 int main() {
-  char str[] = "This is a sample string";
+  char str[] ="This is a simple string";
   char * pch;
-  printf ("Looking for the 's' character in \"%s\"...\n",str);
-  pch=String::strchr(str,'s');
-  while (pch!=NULL)
-  {
-    printf ("found at %d\n",pch-str+1);
-    pch=String::strchr(pch+1,'s');
-  }
-
+  pch = String::strstr (str,"simple");
+  strncpy (pch,"sample",6);
+  puts (str);
   return 0;
 }

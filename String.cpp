@@ -55,8 +55,19 @@ int String::strncmp( const char *left, const char *right, int n ) {
   return 0;
 }
 
-// locate the first occurence of a certain char in a string
+// locate the first occurence of a certain char in a const string
 const char * String::strchr( const char *str, int c ){
+  while(*str != '\0'){
+    if(*str == c) {
+      return str;
+    }
+    str++;
+  }
+  return 0;
+}
+
+// locate the first occurence of a certain char in a string
+char * String::strchr( char *str, int c ) {
   while(*str != '\0'){
     if(*str == c) {
       return str;

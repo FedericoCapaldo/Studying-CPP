@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-const char * myStrchr( const char *str, int c ) {
+char * myStrchr( char *str, int c ) {
   while(*str != '\0'){
     if(*str == c) {
       return str;
@@ -13,8 +13,8 @@ const char * myStrchr( const char *str, int c ) {
 }
 
 int main() {
-  const char str[] = "This is a sample string";
-  const char * pch;
+  char str[] = "This is a sample string";
+  char * pch;
   printf ("Looking for the 's' character in \"%s\"...\n",str);
   pch=String::strchr(str,'s');
   while (pch!=NULL)

@@ -2,26 +2,26 @@
 #include <iostream>
 using namespace std;
 
-
-int myStrncmp( const char *left, const char *right, int n ) {
-  for (int i=0; i < n; i++) {
-    if(*left != *right) {
-      return 1;
+const char * myStrchr( const char *str, int c ) {
+  while(*str != '\0'){
+    if(*str == c) {
+      return str;
     }
-    right++;
-    left++;
+    str++;
   }
   return 0;
 }
 
 int main() {
-  char str[][5] = { "R2D2" , "R3PO" , "R2A6" };
-  int n;
-  puts ("Looking for R2 astromech droids...");
-  for (n=0 ; n<3 ; n++)
-   if (String::strncmp (str[n],"R2xx",2) == 0)
-   {
-     printf ("found %s\n",str[n]);
-   }
+  const char str[] = "This is a sample string";
+  const char * pch;
+  printf ("Looking for the 's' character in \"%s\"...\n",str);
+  pch=String::strchr(str,'s');
+  while (pch!=NULL)
+  {
+    printf ("found at %d\n",pch-str+1);
+    pch=String::strchr(pch+1,'s');
+  }
+
   return 0;
 }

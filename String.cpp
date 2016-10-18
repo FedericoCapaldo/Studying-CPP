@@ -35,5 +35,15 @@ int String::strcmp( const char *left, const char *right ) {
       return 1;
     }
   }
+  for (int i = 0; right[i] != '\0'; i++) {
+    if(left[i] != right[i]) {
+      return 1;
+    }
+  }
   return 0;
+}
+
+
+int strncmp( const char *left, const char *right, int n ) {
+
 }

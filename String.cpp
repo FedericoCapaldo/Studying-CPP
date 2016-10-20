@@ -1,4 +1,6 @@
 #include "String.h"
+#include <iostream>
+using namespace std;
 
 // get length of a string
 int String::strlen( const char *s ) {
@@ -40,11 +42,11 @@ int String::strcmp( const char *left, const char *right ) {
   return 0;
 }
 
-// compare chars of a two string up to position n
+// compare chars of two string up to position n
 int String::strncmp( const char *left, const char *right, int n ) {
   for (int i=0; i < n; i++) {
     if(*left != *right) {
-      return 1;
+      return left[i] - right[i];
     }
     right++;
     left++;

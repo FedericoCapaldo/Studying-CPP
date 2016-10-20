@@ -78,7 +78,7 @@ char * String::strchr( char *str, int c ) {
 }
 
 //check if a strign contains a substringa and if so returns its pointer
-const char * String::strstr( const char *haystack, const char *needle ) {
+/*const char * String::strstr( const char *haystack, const char *needle ) {
   char *myPointer = 0;
 
   int i =0;
@@ -128,3 +128,4 @@ static char * String::strstr( char *haystack, const char *needle ) {
   }
   return myPointer;
 }
+*/

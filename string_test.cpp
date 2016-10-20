@@ -2,36 +2,14 @@
 #include <iostream>
 using namespace std;
 
-char * myStrstr(char *haystack, const char *needle ) {
-  char *myPointer = NULL;
 
-  int i =0;
-  while(haystack[i] != '\0') {
-    if(haystack[i] == needle[0]) {
-      myPointer = haystack + i; //memory address incremented by i, to point at that memory location
-        int j=1;
-        while(needle[j] != '\0') {
-          if(haystack[i+j] != needle[j]) {
-            myPointer = NULL;
-            j = 1;
-            break;
-          }
-          j++;
-        }
-        if(j != 1) {
-          return myPointer;
-        }
-    }
-    i++;
-  }
-  return myPointer;
-}
 
 int main() {
-  char str[] ="This is a simple string";
-  char * pch;
-  pch = String::strstr (str,"simple");
-  strncpy (pch,"sample",6);
-  puts (str);
+  char str1[]="Sample string";
+  char str2[40];
+  char str3[40];
+  String::strcpy (str2,str1);
+  String::strcpy (str3,"copy successful");
+  printf ("str1: %s\nstr2: %s\nstr3: %s\n",str1,str2,str3);
   return 0;
 }

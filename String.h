@@ -13,9 +13,9 @@ class String
     char & operator [] ( int index );
     int size();
 
-    // String reverse(); // does not modify this String
-    // int indexOf( const char c );
-    // int indexOf( const String pattern );
+    String reverse(); // does not modify this String
+    int indexOf( const char c );
+    int indexOf( const String pattern );
 
     bool operator == ( const String s );
     bool operator != ( const String s );
@@ -31,7 +31,7 @@ class String
     String operator += ( const String s );
 
     void print( ostream & out );
-    // void read( istream & in );
+    void read( istream & in );
     ~String();
 
     bool inBounds( int i ) {
@@ -54,4 +54,4 @@ class String
 };
 
 ostream & operator << ( ostream & out, String str );
-// istream & operator >> ( istream & in, String & str );
+istream & operator >> ( istream & in, String & str );

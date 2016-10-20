@@ -28,23 +28,41 @@ int String::size() {
   return String::strlen(buf);
 }
 
-// String String::reverse() {
-//   int size = strlen(buf);
-//   int ind = 0;
-//   char reversed[size];
-//
-//   for (int i = size ; i >= 0 ; i--) {
-//     reversed[ind] = buf[i];
-//     ind++;
-//   }
-//
-//   String p;
-//   return p;
-// }
 
-// int String::indexOf( const char c ) {
-//
-// }
+//NOT COMPLETE
+String String::reverse() {
+  int size = strlen(buf);
+  int ind = 0;
+  char reversed[size];
+
+  for (int i = size ; i >= 0 ; i--) {
+    reversed[ind] = buf[i];
+    ind++;
+  }
+
+  // for some reason it does not initalise p properly
+  String p(reversed);
+
+  for(int i=0; i<strlen(reversed); i++) {
+    p.buf[i] = reversed[i];
+  }
+
+  cout << reversed << endl;
+
+  return p;
+}
+
+int String::indexOf( const char c ) {
+  char *instance = strchr(buf, c);
+  int index = (int) (instance - buf);
+  return index;
+}
+
+int String::indexOf( const String pattern ) {
+  char *instance = strstr(buf, pattern.buf);
+  int index = (int) (instance - buf);
+  return index;
+}
 
 bool String::operator == ( const String s ) {
   if (strcmp(buf, s.buf) == 0) {
@@ -109,8 +127,12 @@ void String::print( ostream & out ) {
   cout << endl;
 }
 
-~String() {
-  
+void String::read( istream & in) {
+
+}
+
+String::~String() {
+
 }
 
 // DEFINITION OF ALL THE str*** FUNCTIONS
@@ -232,4 +254,11 @@ char * String::strstr( char *haystack, const char *needle ) {
 ostream & operator << ( ostream & out, String str ) {
   str.print(out);
   return out;
+}
+
+istream & operator >> ( istream & in, String & str ) {
+  char* received = new char[MAXLEN];
+  in.getline(received,MAXLEN);
+  str = received;
+  return in;
 }

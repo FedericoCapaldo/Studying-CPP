@@ -27,14 +27,14 @@ char * String::strcat(char *dest, const char *src) {
 
 // compare two strings, returns 0 if they are the same
 int String::strcmp( const char *left, const char *right ) {
-  for (int i = 0; left[i] != '\0'; i++) {
+  for (int i = 0; left[i]; i++) {
     if(left[i] != right[i]) {
-      return 1;
+      return left[i] - right[i];
     }
   }
-  for (int i = 0; right[i] != '\0'; i++) {
+  for (int i = 0; right[i]; i++) {
     if(left[i] != right[i]) {
-      return 1;
+      return left[i] - right[i];
     }
   }
   return 0;

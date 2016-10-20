@@ -2,6 +2,119 @@
 #include <iostream>
 using namespace std;
 
+
+String::String( const char * s ) {
+  strcpy(buf, s);
+}
+
+String::String( const String & s ) {
+  strcpy(buf, s.buf);
+}
+
+String String::operator = ( const String & s ) {
+  strcpy(buf, s.buf);
+  return *this;
+}
+
+char & String::operator [] ( int index ) {
+  if(index < 0 || index > MAXLEN) {
+    cerr << "Index out of bound of this string" << endl;
+    exit(-1);
+  }
+  return buf[index];
+}
+
+int String::size() {
+  return String::strlen(buf);
+}
+
+// String String::reverse() {
+//   int size = strlen(buf);
+//   int ind = 0;
+//   char reversed[size];
+//
+//   for (int i = size ; i >= 0 ; i--) {
+//     reversed[ind] = buf[i];
+//     ind++;
+//   }
+//
+//   String p;
+//   return p;
+// }
+
+// int String::indexOf( const char c ) {
+//
+// }
+
+bool String::operator == ( const String s ) {
+  if (strcmp(buf, s.buf) == 0) {
+    return true;
+  }
+  return false;
+}
+
+bool String::operator != ( const String s ) {
+  if(strcmp(buf, s.buf) == 0) {
+    return false;
+  }
+  return true;
+}
+
+bool String::operator > ( const String s ) {
+  if (strcmp(buf, s.buf) > 0) {
+    return true;
+  }
+  return false;
+}
+
+bool String::operator < ( const String s ) {
+  if (strcmp(buf, s.buf) < 0) {
+    return true;
+  }
+  return false;
+}
+
+
+bool String::operator >= ( const String s ) {
+  if (strcmp(buf, s.buf) >= 0) {
+    return true;
+  }
+  return false;
+}
+
+bool String::operator <= ( const String s ) {
+  if (strcmp(buf, s.buf) <= 0) {
+    return true;
+  }
+  return false;
+}
+
+
+String String::operator + (const String s ) {
+  String result;
+  result += *this;
+  result += s;
+  return result;
+}
+
+
+String String::operator += ( const String s ) {
+  strcat(buf, s.buf);
+}
+
+void String::print( ostream & out ) {
+  for(int i=0; i<strlen(buf); i++) {
+    cout << buf[i] ;
+  }
+  cout << endl;
+}
+
+~String() {
+  
+}
+
+// DEFINITION OF ALL THE str*** FUNCTIONS
+
 // get length of a string
 int String::strlen( const char *s ) {
   int length = 0;
@@ -24,7 +137,7 @@ char * String::strcpy( char *dest, const char *src ) {
 
 // concatenates two strings
 char * String::strcat(char *dest, const char *src) {
-  String::strcpy(dest + String::strlen(dest), src);
+  return String::strcpy(dest + String::strlen(dest), src);
 }
 
 // compare two strings, returns 0 if they are the same
@@ -114,4 +227,9 @@ char * String::strstr( char *haystack, const char *needle ) {
       }
     }
     return NULL;
+}
+
+ostream & operator << ( ostream & out, String str ) {
+  str.print(out);
+  return out;
 }

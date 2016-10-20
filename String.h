@@ -1,35 +1,43 @@
 #define MAXLEN 128
+#include <iostream>
+using namespace std;
 
 class String
 {
   public:
-    // /// Both constructors should construct
-    // /// this String from the parameter s
-    // String( const char * s = "");
-    // String( const String & s );
-    // String operator = ( const String & s );
-    // char & operator [] ( int index );
-    // int size();
+    /// Both constructors should construct
+    /// this String from the parameter s
+    String( const char * s = "");
+    String( const String & s );
+    String operator = ( const String & s );
+    char & operator [] ( int index );
+    int size();
+
     // String reverse(); // does not modify this String
     // int indexOf( const char c );
     // int indexOf( const String pattern );
-    // bool operator == ( const String s );
-    // bool operator != ( const String s );
-    // bool operator > ( const String s );
-    // bool operator < ( const String s )
-    // bool operator <= ( const String s );
-    // bool operator >= ( const String s );
-    // /// concatenates this and s to return result
-    // String operator + ( const String s );
-    // /// concatenates s onto end of this string
-    // String operator += ( const String s );
-    // void print( ostream & out );
+
+    bool operator == ( const String s );
+    bool operator != ( const String s );
+    bool operator > ( const String s );
+    bool operator < ( const String s );
+    bool operator <= ( const String s );
+    bool operator >= ( const String s );
+
+    /// concatenates this and s to return result
+    String operator + ( const String s );
+
+    /// concatenates s onto end of this string
+    String operator += ( const String s );
+
+    void print( ostream & out );
     // void read( istream & in );
-    // ~String();
+    ~String();
 
     bool inBounds( int i ) {
       return i >= 0 && i < strlen(buf);
     }
+
     // HINT: some C string primitives you should define and use
     static int strlen( const char *s );
     static char * strcpy( char *dest, const char *src );
@@ -45,5 +53,5 @@ class String
     // use the null ‘\0’ terminator to mark the end
 };
 
-// ostream & operator << ( ostream & out, String str );
+ostream & operator << ( ostream & out, String str );
 // istream & operator >> ( istream & in, String & str );

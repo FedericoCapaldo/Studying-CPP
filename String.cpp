@@ -76,55 +76,42 @@ char * String::strchr( char *str, int c ) {
   return 0;
 }
 
-//check if a strign contains a substringa and if so returns its pointer
-/*const char * String::strstr( const char *haystack, const char *needle ) {
-  char *myPointer = 0;
-
-  int i =0;
-  while(haystack[i] != '\0') {
-    if(haystack[i] == needle[0]) {
-      myPointer = haystack + i; //memory address incremented by i, to point at that memory location
-        int j=1;
-        while(needle[j] != '\0') {
-          if(haystack[i+j] != needle[j]) {
-            myPointer = 0;
-            j = 1;
-            break;
-          }
-          j++;
-        }
-        if(j != 1) {
-          return myPointer;
-        }
+// check the presence of a substring in a string
+const char * String::strstr( const char *haystack, const char *needle ) {
+  int i = 0;
+  const char *pointer = haystack;
+  while(haystack[i]) {
+    const char *occurence = String::strchr(++haystack, needle[0]);
+    if (occurence == 0) {
+      return NULL;
+    } else {
+      if(String::strncmp(occurence, needle, String::strlen(needle)) == 0) {
+        return occurence ;
+      } else {
+        i++;
+        continue;
+      }
     }
-    i++;
   }
-  return myPointer;
+  return NULL;
 }
 
-// returns the pointer of a string which contains a substring
-static char * String::strstr( char *haystack, const char *needle ) {
-  char *myPointer = 0;
-
-  int i =0;
-  while(haystack[i] != '\0') {
-    if(haystack[i] == needle[0]) {
-      myPointer = haystack + i; //memory address incremented by i, to point at that memory location
-        int j=1;
-        while(needle[j] != '\0') {
-          if(haystack[i+j] != needle[j]) {
-            myPointer = 0;
-            j = 1;
-            break;
-          }
-          j++;
+// check the presence of a substring in a string
+char * String::strstr( char *haystack, const char *needle ) {
+    int i = 0;
+    char *pointer = haystack;
+    while(haystack[i]) {
+      char *occurence = String::strchr(++haystack, needle[0]);
+      if (occurence == 0) {
+        return NULL;
+      } else {
+        if(String::strncmp(occurence, needle, String::strlen(needle)) == 0) {
+          return occurence ;
+        } else {
+          i++;
+          continue;
         }
-        if(j != 1) {
-          return myPointer;
-        }
+      }
     }
-    i++;
-  }
-  return myPointer;
+    return NULL;
 }
-*/

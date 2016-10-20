@@ -12,9 +12,12 @@ int String::strlen( const char *s ) {
 
 // copy one src string to destination string
 char * String::strcpy( char *dest, const char *src ) {
-  char *destinationString = dest;
-  while((*dest++ = *src++));
-  return destinationString;
+  int i = 0;
+  while (src[i]) {
+    dest[i] = src[i];
+    i++;
+  }
+  dest[i] = '\0';
 }
 
 // concatenates two strings

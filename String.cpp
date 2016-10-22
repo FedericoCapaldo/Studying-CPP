@@ -19,7 +19,6 @@ String String::operator = ( const String & s ) {
 char & String::operator [] ( int index ) {
   if(index < 0 || index > MAXLEN) {
     cerr << "Index out of bound of this string" << endl;
-    exit(-1);
   }
   return buf[index];
 }

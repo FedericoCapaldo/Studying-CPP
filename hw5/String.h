@@ -34,7 +34,7 @@ class String
       ListNode(char newInfo, ListNode * newNext)
         : info( newInfo ), next( newNext )
       {
-          
+
       }// HINT: some primitives you *must* write and use, recursion?
       static ListNode * stringToList(const char *s);
       static ListNode * copy(ListNode * L);

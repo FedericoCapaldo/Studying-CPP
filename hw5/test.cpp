@@ -4,9 +4,11 @@ using namespace std;
 
 int main() {
 
-    String s("something");
-    
+    String s("some");
+    cout << s.size() << endl;
 
+    String t(s);
+    cout << t.size() << endl;
 
     return 0;
 }

@@ -3,15 +3,11 @@
 using namespace std;
 
 String::String(const char * s) {
-    cout << "creating new string" << endl;
-    // WHAT SHOULD I DO HERE????
-    // initalise head
     head = ListNode::stringToList(s);
 }
 
 String::String( const String & s ) {
-  // WHAT SHOULD I DO HERE??
-  head = s -> head;
+  head = s.head;
 }
 
 String String::operator = ( const String & s ) {
@@ -23,11 +19,11 @@ char & String::operator [] ( const int index ) {
 }
 
 int String::size() const {
-
+    return head -> length(head);
 }
 
 int String::indexOf( char c ) const {
-
+  
 }
 
 bool String::operator == ( const String & s ) const {
@@ -90,18 +86,27 @@ istream & operator >> ( istream & in, String & str ) {
 // }
 
 String::ListNode * String::ListNode::stringToList(const char *s) {
-  ListNode * temp = new ListNode(s[0], NULL);
-  temp -> info = s[0];
-  temp -> next = new ListNode(s[i+1]);
-
+  if(!s[0]) {
+    return NULL;
+  }
+  ListNode * temp = new ListNode(s[0], NULL); // pointer to be returned
+  ListNode * p = temp; // moving pointer along the list
+  int index = 1;
+  while(s[index]) {
+    ListNode * node = new ListNode(s[index], NULL);
+    p -> next = node;
+    p = p -> next;
+    index++;
+  }
+  return temp;
 }
 
 // create new pointer and copy each element of the list
-ListNode * String::ListNode::copy(ListNode * L) {
-  ListNode * myNode = new ListNode();
-  myNode -> info = L -> info;
-  myNode -> next = L -> info; // is this right?
-  return myNode;
+String::ListNode * String::ListNode::copy(ListNode * L) {
+  // ListNode * myNode = new ListNode();
+  // myNode -> info = L -> info;
+  // myNode -> next = L -> info; // is this right?
+  // return myNode;
 }
 
 // Traverse all list and then check each char
@@ -122,7 +127,7 @@ bool String::ListNode::equal(ListNode * L1, ListNode * L2) {
 }
 
 
-ListNode * String::ListNode concat(ListNode * L1, ListNode * L2) {
+String::ListNode * String::ListNode::concat(ListNode * L1, ListNode * L2) {
   ListNode * L1end = L1;
 
   // traverse first List
@@ -146,14 +151,13 @@ int String::ListNode::compare(ListNode * L1, ListNode * L2) {
 }
 
 
-// assuming that L is the head
+// naviate through list to get the length
 int String::ListNode::length(ListNode *L) {
      int counter = 0;
      ListNode * current = L;
-     while(current!=NULL) {
+     while(current != NULL) {
        current = current -> next;
        counter++;
      }
-
      return counter;
 }

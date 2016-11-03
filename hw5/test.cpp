@@ -9,6 +9,7 @@ int main() {
 
     String t(s);
     cout << t.size() << endl;
+    cout << s.indexOf('s') << endl;
 
     return 0;
 }

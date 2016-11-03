@@ -23,7 +23,16 @@ int String::size() const {
 }
 
 int String::indexOf( char c ) const {
-  
+  ListNode * current = head;
+  int counter = 0;
+  while(current != NULL) {
+    if (current -> info == c) {
+      return counter;
+    }
+    counter++;
+    current = current -> next;
+  }
+  return -1;
 }
 
 bool String::operator == ( const String & s ) const {

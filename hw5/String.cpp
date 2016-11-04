@@ -11,11 +11,21 @@ String::String( const String & s ) {
 }
 
 String String::operator = ( const String & s ) {
-
+  // you should free the memory first?
+  head = ListNode::copy(s.head);
 }
 
 char & String::operator [] ( const int index ) {
-
+    if(index < 0 || index >= ListNode::length(head)) {
+      cerr << "Index out of bound" << endl;
+      // it should return something?
+    } else {
+      ListNode * current = head;
+      for(int i = 0; i < index; i++) {
+        current = current -> next;
+      }
+      return current -> info;
+    }
 }
 
 int String::size() const {
@@ -36,7 +46,7 @@ int String::indexOf( char c ) const {
 }
 
 bool String::operator == ( const String & s ) const {
-
+  return ListNode::equal(head, s.head);
 }
 
 bool String::operator < ( const String & s ) const {
@@ -45,12 +55,18 @@ bool String::operator < ( const String & s ) const {
 
 /// concatenates this and s
 String String::operator + ( const String & s ) const {
-
+  // THIS IS CAUSEING SEGMENTATION FAULT
+  String newString ;
+  newString.head = ListNode::copy(head);
+  ListNode::concat(newString.head, s.head);
+  return newString;
 }
 
 /// concatenates s onto end of this
 String String::operator += ( const String & s ) {
-
+  ListNode * cp = ListNode::copy(s.head);
+  ListNode::concat(head, cp);
+  return * this;
 }
 
 // does not modify this String
@@ -59,7 +75,12 @@ String String::reverse() {
 }
 
 void String::print( ostream & out ) {
-
+    ListNode * current = head;
+    while(current!= NULL) {
+      cout << current -> info ;
+      current = current -> next;
+    }
+    // cout << endl;
 }
 
 void String::read( istream & in ) {
@@ -67,7 +88,7 @@ void String::read( istream & in ) {
 }
 
 String::~String() {
-    cout << "deleting from descructor" << endl;
+    // cout << "deleting from descructor" << endl;
 }
 
 
@@ -85,15 +106,6 @@ istream & operator >> ( istream & in, String & str ) {
 
 /// LIST NODE METHODS
 
-// look at the photo of the projector.
-// ListNode * temp = newListNode(s[0], NULL);
-// int i = 0;
-// for (ListNode *p = temp; p!= NULL; p = p -> next) {
-//   // THIS SHOULD LOOP UNTIL CHAR '\0' is found in *s;
-//   p->next= new ListNode(s[i+1], NULL);
-//   i++;
-// }
-
 String::ListNode * String::ListNode::stringToList(const char *s) {
   if(!s[0]) {
     return NULL;
@@ -110,22 +122,30 @@ String::ListNode * String::ListNode::stringToList(const char *s) {
   return temp;
 }
 
-// create new pointer and copy each element of the list
+// create new pointer and copy each element of the list to a new list
 String::ListNode * String::ListNode::copy(ListNode * L) {
-  // ListNode * myNode = new ListNode();
-  // myNode -> info = L -> info;
-  // myNode -> next = L -> info; // is this right?
-  // return myNode;
+  ListNode * current = L;
+  ListNode * point = new ListNode(current -> info, NULL);
+  ListNode * const myHead = point;
+
+  current = current -> next;
+  while(current != NULL) {
+    ListNode * temp = new ListNode(current -> info, NULL);
+    point -> next = temp;
+    point = point -> next;
+    current = current -> next;
+  }
+
+  return myHead;
 }
 
 // Traverse all list and then check each char
 bool String::ListNode::equal(ListNode * L1, ListNode * L2) {
   int i = 0;
-  while(L1 != NULL || L2 != NULL) { // wrong conversion
+  while(L1 != NULL || L2 != NULL) {
     if(L1 == NULL || L2 == NULL) {
       return false;
     }
-
     if (!(L1 -> info == L2 -> info)) {
       return false;
     }
@@ -138,19 +158,20 @@ bool String::ListNode::equal(ListNode * L1, ListNode * L2) {
 
 String::ListNode * String::ListNode::concat(ListNode * L1, ListNode * L2) {
   ListNode * L1end = L1;
-
   // traverse first List
   while(L1end->next != NULL) {
     L1end = L1end -> next;
   }
-
   // concatenate the second string
   while(L2 != NULL) {
     L1end -> next = L2;
+    L1end = L1end -> next;
     L2 = L2 -> next;
   }
+  // make last null
+  L1end -> next = NULL;
 
-  return L1;
+  return L1; //or L1end.
 }
 
 
@@ -159,6 +180,9 @@ int String::ListNode::compare(ListNode * L1, ListNode * L2) {
   return L1 -> info - L2 -> info;
 }
 
+void String::ListNode::deleteList(ListNode * L) {
+
+}
 
 // naviate through list to get the length
 int String::ListNode::length(ListNode *L) {

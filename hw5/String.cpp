@@ -71,7 +71,22 @@ String String::operator += ( const String & s ) {
 
 // does not modify this String
 String String::reverse() {
+  String reversed;
+  reversed.head = ListNode::copy(head);
 
+  ListNode * previous = NULL;
+  ListNode * current = reversed.head;
+  ListNode * next ;
+
+  while(current != NULL) {
+     next = current -> next;
+     current-> next = previous;
+     previous = current;
+     current = next;
+   }
+
+   reversed.head = ListNode::copy(previous);
+   return reversed;
 }
 
 void String::print( ostream & out ) {
@@ -84,7 +99,9 @@ void String::print( ostream & out ) {
 }
 
 void String::read( istream & in ) {
-
+  char * temp = new char[128];
+  in.getline(temp, 128);
+  head = ListNode::stringToList(temp);
 }
 
 String::~String() {

@@ -45,5 +45,16 @@ int main() {
     after += after;
     cout << after << endl;
 
+    String string2("my sentence is short.");
+    cout << string2 << endl;
+    cout << string2.reverse() << endl;
+    cout << string2.reverse().reverse() << endl;
+
+    String inputting ;
+    cout << "Enter a test string: ";
+    cin >> inputting;
+    cout << inputting << endl;
+
+
     return 0;
 }

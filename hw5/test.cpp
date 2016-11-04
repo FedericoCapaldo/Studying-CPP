@@ -2,6 +2,14 @@
 #include <iostream>
 using namespace std;
 
+void example() {
+  String yak("aaadsa");
+  String bar("aaadss");
+  // cout << (yak < bar) << endl;  
+}
+
+
+
 int main() {
 
     // String s("some");
@@ -49,16 +57,13 @@ int main() {
     // cout << string2 << endl;
     // cout << string2.reverse() << endl;
     // cout << string2.reverse().reverse() << endl;
-
+    //
     // String inputting ;
     // cout << "Enter a test string: ";
     // cin >> inputting;
     // cout << inputting << endl;
 
-    String yak("aaadsa");
-    String bar("aaadss");
-    cout << (yak < bar) << endl;
-
+    example();
 
     return 0;
 }

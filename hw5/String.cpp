@@ -56,6 +56,7 @@ bool String::operator < ( const String & s ) const {
   return false;
 }
 
+
 /// concatenates this and s
 String String::operator + ( const String & s ) const {
   // THIS IS CAUSEING SEGMENTATION FAULT
@@ -65,12 +66,14 @@ String String::operator + ( const String & s ) const {
   return newString;
 }
 
+
 /// concatenates s onto end of this
 String String::operator += ( const String & s ) {
   ListNode * cp = ListNode::copy(s.head);
   ListNode::concat(head, cp);
   return * this;
 }
+
 
 // does not modify this String
 String String::reverse() {
@@ -109,6 +112,8 @@ void String::read( istream & in ) {
 
 String::~String() {
     // cout << "deleting from descructor" << endl;
+    // call the listNode deleteList on head;
+    // String::ListNode::deleteList(head);
 }
 
 
@@ -142,6 +147,7 @@ String::ListNode * String::ListNode::stringToList(const char *s) {
   return temp;
 }
 
+
 // create new pointer and copy each element of the list to a new list
 String::ListNode * String::ListNode::copy(ListNode * L) {
   ListNode * current = L;
@@ -158,6 +164,7 @@ String::ListNode * String::ListNode::copy(ListNode * L) {
 
   return myHead;
 }
+
 
 // Traverse all list and then check each char
 bool String::ListNode::equal(ListNode * L1, ListNode * L2) {
@@ -226,9 +233,17 @@ int String::ListNode::compare(ListNode * L1, ListNode * L2) {
   return 0;
 }
 
-void String::ListNode::deleteList(ListNode * L) {
 
+void String::ListNode::deleteList(ListNode * L) {
+  ListNode * current = L;
+  ListNode * nextOne;
+  while(current != NULL) {
+    nextOne = current -> next;
+    delete current;
+    current = nextOne;
+  }
 }
+
 
 // naviate through list to get the length
 int String::ListNode::length(ListNode *L) {

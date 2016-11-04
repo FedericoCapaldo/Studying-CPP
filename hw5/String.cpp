@@ -13,6 +13,7 @@ String::String( const String & s ) {
 String String::operator = ( const String & s ) {
   // you should free the memory first?
   head = ListNode::copy(s.head);
+  return * this;
 }
 
 char & String::operator [] ( const int index ) {
@@ -242,6 +243,10 @@ void String::ListNode::deleteList(ListNode * L) {
     delete current;
     current = nextOne;
   }
+  // while(L != NULL) {
+  //   deleteList(L->next);
+  //   delete current;
+  // }
 }
 
 

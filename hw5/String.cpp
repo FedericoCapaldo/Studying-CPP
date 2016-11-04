@@ -50,7 +50,10 @@ bool String::operator == ( const String & s ) const {
 }
 
 bool String::operator < ( const String & s ) const {
-
+  if(ListNode::compare(head, s.head) < 0) {
+    return true;
+  }
+  return false;
 }
 
 /// concatenates this and s
@@ -194,7 +197,33 @@ String::ListNode * String::ListNode::concat(ListNode * L1, ListNode * L2) {
 
 // loop and compare each char like in strcmp
 int String::ListNode::compare(ListNode * L1, ListNode * L2) {
-  return L1 -> info - L2 -> info;
+  ListNode * p1 = L1;
+  ListNode * p2 = L2;
+  while(p1 != NULL) {
+    if(p2 == NULL) {
+      return 1;
+    }
+    if(p1->info != p2->info) {
+      return p1->info - p2->info;
+    }
+    p1 = p1 -> next;
+    p2 = p2 -> next;
+  }
+
+  p1 = L1;
+  p2 = L2;
+  while(p2 != NULL) {
+    if (p1 == NULL) {
+      return -1;
+    }
+    if(p1->info != p2->info) {
+      return p1->info - p2->info;
+    }
+    p1 = p1 -> next;
+    p2 = p2 -> next;
+  }
+
+  return 0;
 }
 
 void String::ListNode::deleteList(ListNode * L) {

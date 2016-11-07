@@ -11,6 +11,6 @@ class Shape {
     {
 
     }
-    virtual double area();
-    virtual void draw();
+    virtual double area() = 0;
+    virtual void draw() = 0;
 };

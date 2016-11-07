@@ -1,17 +1,17 @@
 #include "Shape.h"
 
 class Triangle : public Shape {
-  double base;
   double height;
+  double base;
 
   public:
-    Triangle(int centerX, int centerY, string name, int base, int height)
-      : Shape(centerX, centerY, name), base(base), height(height)
+    Triangle(int height, int base, string name, int centerX = 0, int centerY = 0)
+      : Shape(centerX, centerY, name), height(height), base(base)
     {
     }
 
     double area() {
-      return (base * height) / 2;
+      return (height * base) / 2;
     }
 
     void draw() {

@@ -5,7 +5,7 @@ class Circle : public Shape {
   double radius;
 
   public:
-    Circle(int centerX, int centerY, string name, double radius)
+    Circle(double radius, string name, int centerX = 0, int centerY = 0)
       : Shape(centerX, centerY, name), radius(radius)
     {
        PI = 3.14159; // to avoid compiler warning

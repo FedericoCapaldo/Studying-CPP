@@ -1,20 +1,20 @@
 #include "Square.h"
 
 class Rectangle : public Square {
-  int length;
+  int height;
   int width;
 
   public:
-    Rectangle(int centerX, int centerY, string name, int length, int width)
-      : Square(centerX, centerY, name, length), width(width)
+    Rectangle(int height, int width, string name, int centerX = 0, int centerY = 0)
+      : Square(height, name, centerX, centerY), width(width)
     {
     }
 
     double area() {
-      return length * width;
+      return height * width;
     }
 
     void draw() {
-
+      
     }
 };

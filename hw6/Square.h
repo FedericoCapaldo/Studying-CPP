@@ -1,16 +1,16 @@
 #include "Shape.h"
 
 class Square : public Shape {
-  double side;
+  double length;
 
   public:
-    Square(int centerX, int centerY, string name, int side)
-      : Shape(centerX, centerY, name), side(side)
+    Square(int centerX, int centerY, string name, int length)
+      : Shape(centerX, centerY, name), length(length)
     {
     }
 
     double area() {
-      return side * side;
+      return length * length;
     }
 
     void draw() {

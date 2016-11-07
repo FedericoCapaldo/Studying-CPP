@@ -112,9 +112,7 @@ void String::read( istream & in ) {
 }
 
 String::~String() {
-    // cout << "deleting from descructor" << endl;
-    // call the listNode deleteList on head;
-    // String::ListNode::deleteList(head);
+  // String::ListNode::deleteList(this -> head);
 }
 
 
@@ -237,16 +235,14 @@ int String::ListNode::compare(ListNode * L1, ListNode * L2) {
 
 void String::ListNode::deleteList(ListNode * L) {
   ListNode * current = L;
-  ListNode * nextOne;
   while(current != NULL) {
+    ListNode * nextOne;
     nextOne = current -> next;
     delete current;
     current = nextOne;
   }
-  // while(L != NULL) {
-  //   deleteList(L->next);
-  //   delete current;
-  // }
+  delete current;
+  L = NULL;
 }
 
 

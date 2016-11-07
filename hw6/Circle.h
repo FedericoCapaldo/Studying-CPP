@@ -6,7 +6,7 @@ class Circle : public Shape {
 
   public:
     Circle(int centerX, int centerY, string name, double radius)
-      : Shape (centerX, centerY, name), radius(radius)
+      : Shape(centerX, centerY, name), radius(radius)
     {
        PI = 3.14159; // to avoid compiler warning
     }
@@ -16,6 +16,6 @@ class Circle : public Shape {
     }
 
     void draw() {
-      
+
     }
 };

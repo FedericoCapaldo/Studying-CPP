@@ -1,7 +1,4 @@
-#include "Square.h"
-
 class Rectangle : public Square {
-  int height;
   int width;
 
   public:
@@ -11,10 +8,17 @@ class Rectangle : public Square {
     }
 
     double area() {
-      return height * width;
+      return side * width;
     }
 
     void draw() {
-      
+      for(int i=0; i<side; i++) {
+        for(int j=0; j<width; j++) {
+          cout << " *  " ;
+        }
+        cout << endl;
+          cout << endl;
+      }
     }
+
 };

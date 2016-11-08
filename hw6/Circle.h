@@ -1,5 +1,3 @@
-#include "Shape.h"
-
 class Circle : public Shape {
   double PI;
   double radius;

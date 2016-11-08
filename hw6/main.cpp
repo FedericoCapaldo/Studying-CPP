@@ -11,13 +11,19 @@ int main() {
   cout << firstSquare.area() << endl;
   firstSquare.draw();
 
-  Rectangle firstRectangle(5, 10, "firstRectangle");
+  Rectangle firstRectangle(20, 10, "firstRectangle");
   cout << firstRectangle.area() << endl;
   firstRectangle.draw();
 
-  Triangle firstTriangle(10, 20, "firstTriangle");
+  Triangle firstTriangle(20, 20, "firstTriangle");
   cout << firstTriangle.area() << endl;
   firstTriangle.draw();
 
-
+    Circle firstCircle(9, "firstCircle");
+    cout << firstCircle.area() << endl;
+    firstCircle.draw();
+    
+    Circle secondCircle(10, "secondCircle");
+    cout << secondCircle.area() << endl;
+    secondCircle.draw();
 }

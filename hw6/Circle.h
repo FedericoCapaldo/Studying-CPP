@@ -14,6 +14,41 @@ class Circle : public Shape {
     }
 
     void draw() {
-
+        int radiusDraw = radius;
+        // minimal size for a decent drawing
+        if (radius < 7) {
+            radiusDraw = 7;
+        }
+        
+        int blanks = radiusDraw / 2;
+        int stars = (radiusDraw / 2) + 1;
+        while(stars < radiusDraw) {
+            for(int i=0; i<blanks; ++i) {
+                cout << "  ";
+            }
+            for(int i=0; i<stars; ++i) {
+                cout << " *  ";
+            }
+            cout << endl;
+            cout << endl;
+            --blanks;
+            ++stars;
+        }
+        
+        int initialStars = (radiusDraw / 2) + 1;
+        while(stars > initialStars) {
+            ++blanks;
+            --stars;
+            for(int i=blanks; i>0; --i) {
+                cout << "  ";
+            }
+            for(int i=stars; i>0; --i) {
+                cout << " *  ";
+            }
+            cout << endl;
+            cout << endl;
+        }
+        
+        
     }
 };

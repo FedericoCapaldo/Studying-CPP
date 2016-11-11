@@ -42,8 +42,5 @@ class Triangle : public Shape {
             }
             cout << endl;
         }
-        
-        
-        
     }
 };

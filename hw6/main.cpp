@@ -5,25 +5,33 @@
 #include "Square.h"
 #include "Rectangle.h"
 using namespace std;
+#include "Picture.h"
 
 int main() {
-  Square firstSquare(5, "firstSquare");
-  cout << firstSquare.area() << endl;
-  firstSquare.draw();
+    Triangle * firstTriangle = new Triangle(5, 5, "firstTriangle");
+    Triangle * secondTriangle = new Triangle(4,3, "secondTriangle");
 
-  Rectangle firstRectangle(20, 10, "firstRectangle");
-  cout << firstRectangle.area() << endl;
-  firstRectangle.draw();
+    Circle * firstCircle = new Circle(5, "firstCircle");
+    Circle * secondCircle = new Circle(10, "secondCircle");
 
-  Triangle firstTriangle(20, 20, "firstTriangle");
-  cout << firstTriangle.area() << endl;
-  firstTriangle.draw();
+    Square * firstSquare = new Square(5, "firstSquare");
+    Square * secondSquare = new Square(10, "SecondSquare");
 
-    Circle firstCircle(9, "firstCircle");
-    cout << firstCircle.area() << endl;
-    firstCircle.draw();
-    
-    Circle secondCircle(10, "secondCircle");
-    cout << secondCircle.area() << endl;
-    secondCircle.draw();
+    Rectangle * firstRectangle = new Rectangle(4,8, "firstRectangle");
+    Rectangle * secondRectangle = new Rectangle(8,4, "secondRectangle");
+
+
+    Picture * p = new Picture();
+    p->add(firstTriangle);
+    p->add(secondTriangle);
+    p->add(firstCircle);
+    p->add(secondCircle);
+    p->add(firstSquare);
+    p->add(secondSquare);
+    p->add(firstRectangle);
+    p->add(secondRectangle);
+    p->drawAll();
+    cout << "The total area of the shapes on this picture is " << (p->totalArea()) << " square units." << endl;
+    delete p;
+    return 0;
 }

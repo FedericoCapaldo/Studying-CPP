@@ -1,0 +1,26 @@
+QUESTIONS:
+
+1. how to implement the LinkedList for Picture. should be a seprate class?
+  But the hw6.zip does not contain any other file
+nested ShapeLinkedList class
+
+
+
+2. Which class should have add(Shape * sp) {};
+Picture.h
+
+
+
+3. the only descuctor i should build is of the picture class, not the one of circle , triangle or SHAPE.
+yes, remember to remove the Shape first, move to next node, and also delete this LinkedListNode itself
+
+
+
+4. Should I create the object as pointer in order to add it to the Picture object (so the list) ?
+  e.g. Triangle * firstTrianle = new trianlge(4,5, "firstTriangle"); OR Triangle firstTrianle(4,5, "firstTriangle");
+Do the first, pointer.
+
+
+
+5. Is it ok the way I have passed the default 0 inside the concrete shapes? (question because of capital warning in hw)
+yes it is
